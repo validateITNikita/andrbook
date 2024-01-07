@@ -1,0 +1,14 @@
+{
+    "name": "Gentlemen",
+    "description": "Gentlemen is a collection of NFTs created by us and represents the magnificence of the veteran crypto investor.",
+    "id": 76,
+    "date": 1684561650,
+    "image": "ipfs://bafkreibe2m4cet3pvi7nskrpt74ijaj4kamek7jwgsod4om2awzuxbcxhu",
+    "external_url": "http://mentevisionaria.pt",
+    "attributes": [
+        {
+            "trait_type": "Gentleman Name",
+            "value": "George Blackwood"
+        }
+    ]
+}

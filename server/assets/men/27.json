@@ -1,0 +1,14 @@
+{
+    "name": "Gentlemen",
+    "description": "Gentlemen is a collection of NFTs created by us and represents the magnificence of the veteran crypto investor.",
+    "id": 27,
+    "date": 1684561650,
+    "image": "ipfs://bafybeidck3uxjio3w5vzn5p4ijpkdqmli4kjnd7t7zjmwojpqpzmtch7b4",
+    "external_url": "http://mentevisionaria.pt",
+    "attributes": [
+        {
+            "trait_type": "Gentleman Name",
+            "value": "Henry Sinclair"
+        }
+    ]
+}

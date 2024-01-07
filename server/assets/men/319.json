@@ -1,0 +1,14 @@
+{
+    "name": "Gentlemen",
+    "description": "Gentlemen is a collection of NFTs created by us and represents the magnificence of the veteran crypto investor.",
+    "id": 319,
+    "date": 1684561650,
+    "image": "ipfs://bafybeib5pahg77f3jcc7vwku3nc5vwklvcjatze6vww5vmrko3givguf4e",
+    "external_url": "http://mentevisionaria.pt",
+    "attributes": [
+        {
+            "trait_type": "Gentleman Name",
+            "value": "Thomas Hawthorne"
+        }
+    ]
+}

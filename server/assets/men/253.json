@@ -1,0 +1,14 @@
+{
+    "name": "Gentlemen",
+    "description": "Gentlemen is a collection of NFTs created by us and represents the magnificence of the veteran crypto investor.",
+    "id": 253,
+    "date": 1684561650,
+    "image": "ipfs://bafkreib7pwptj3azozfn2nyqzkvinnkew6sobived3amqnz7drrk7ut4ja",
+    "external_url": "http://mentevisionaria.pt",
+    "attributes": [
+        {
+            "trait_type": "Gentleman Name",
+            "value": "Charles Beaumont"
+        }
+    ]
+}

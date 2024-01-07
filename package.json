@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "@unocss/nuxt": "^0.55.2",
+    "@use-wagmi/nuxt": "^1.1.4",
+    "nuxt": "^3.6.5",
+    "nuxt-icon": "^0.5.0"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "@vueuse/motion": "^2.0.0",
+    "@vueuse/nuxt": "^10.3.0",
+    "@wagmi/core": "^1.3.8",
+    "ethers": "^5.7.2",
+    "pinia": "^2.1.6",
+    "viem": "^1.3.0",
+    "vue3-toastify": "^0.1.12"
+  }
+}
