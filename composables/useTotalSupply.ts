@@ -1,5 +1,5 @@
 import { readTotalSupplyConfig, readMaxSupplyConfig } from "@/contract";
-import { gentlemenABI } from "contract/abi";
+import { gentlemenABI } from "@/contract/abi";
 
 export default () => {
     const { data: totalSupply, refetch: refetchTotalSupply } = useContractRead(
@@ -10,8 +10,7 @@ export default () => {
         }
     );
 
-    const { data: maxSupply, refetch: refetchMaxSupply } =
-        useContractRead(readMaxSupplyConfig);
+    const { data: maxSupply, refetch: refetchMaxSupply } = useContractRead(readMaxSupplyConfig);
 
     return {
         totalSupply,

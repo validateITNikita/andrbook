@@ -3,7 +3,7 @@ import { useBlockchainStore } from "./BlockchainStore"
 import { useUserStateStore } from "./UserStateStore"
 import { useUserStore } from "./UserStore"
 
-import {NFT_Metadata, RARITY} from '~/types/GentelmanNFT';
+import type { NFT_Metadata, RARITY } from '~/types/GentelmanNFT';
 
 export const useNFTStore = defineStore('NFT_STORE', () => {
 
@@ -66,10 +66,9 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
     })
 
     const initNFT = async () => {
-
         loadingMintInfo.value = true;
         
-        const {mintPrice, totalSupply}  = await getNFTData();
+        const { mintPrice, totalSupply }  = await getNFTData();
         NFT.value.MINT_PRICE = mintPrice;
         NFT.value.TOTAL_SUPPLY = totalSupply;
 
@@ -99,7 +98,7 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
         let rpc = useBlockchainStore()!.NETWORK!.rpcUrls![0];
         let _address = NFT.value.CONTRACT;
 
-        const provider = new ethers.providers.JsonRpcProvider(rpc);
+        const provider = new ethers.JsonRpcProvider(rpc);
         const contract = new ethers.Contract(_address, ABI, provider);
 
         let totalSupply = null;
@@ -130,7 +129,7 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
         let rpc = useBlockchainStore()!.NETWORK!.rpcUrls![0];
         let _address = NFT.value.CONTRACT;
 
-        const provider = new ethers.providers.JsonRpcProvider(rpc);
+        const provider = new ethers.JsonRpcProvider(rpc);
         const contract = new ethers.Contract(_address, ABI, provider);
 
         let mintPrice = null;
@@ -139,7 +138,7 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
             try {
                 let mintPriceBN = await contract._mintPrice();
 
-                mintPrice = Number(ethers.utils.formatEther(mintPriceBN));
+                mintPrice = Number(ethers.formatEther(mintPriceBN));
             } catch (error) {
                 console.log(error);
                 
@@ -172,21 +171,19 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
         try {
             let GetNextTokenURI = () : string  => {
                 
-                
                 let base = useRuntimeConfig().public.baseURL.split('//')[1];
                 
                 let nextID = 0;
 
                 if(NFT.value.TOTAL_SUPPLY != null ){
 
-                    nextID = NFT.value.TOTAL_SUPPLY + 1 ;
+                    nextID = NFT.value.TOTAL_SUPPLY + 1;
                     let uri = `${base}api/${nextID}.json`;
-                    
 
                     return uri;
                 }
                 else{
-                    throw new Error('Could not get total supply.')
+                    throw new Error('Couldn\'t get total supply.')
                 }
 
             }
@@ -194,7 +191,7 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
             let tokenURI = GetNextTokenURI();
             
             const mintTX = await contract!.safeMint(tokenURI, {
-                value: ethers.utils.parseEther(NFT.value.MINT_PRICE.toString())
+                value: ethers.parseEther(NFT.value.MINT_PRICE.toString())
             });
 
             await mintTX.wait(1);
@@ -237,8 +234,8 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
         let _contract = NFT.value.CONTRACT ;
         
         try {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
             const contract = new ethers.Contract(_contract, ABI, signer)
 
             const sendTX = await contract.transferFrom(await signer.getAddress(), receiver, tokenId);
@@ -256,8 +253,8 @@ export const useNFTStore = defineStore('NFT_STORE', () => {
         
         try {
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
             const contract = new ethers.Contract(_contract, ABI, signer)
             // const {provider,contract} = useEther({
             //     providerUrl: window.ethereum,

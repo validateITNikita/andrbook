@@ -29,6 +29,6 @@ export const BSC_TESTNET_NETWORK = {
 };
 
 export const GENTLEMEN_ADDRESS: address =
-    "0x3ea6ad9432Bd0C220cD052386a85Ac0E485587F4";
+    "";
 export const GENTLEMEN_ADDRESS_TESTNET: address =
     "0x3ea6ad9432Bd0C220cD052386a85Ac0E485587F4";

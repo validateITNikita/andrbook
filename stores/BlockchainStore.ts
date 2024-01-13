@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import EthChain from "~/types/EthChain";
+import type EthChain from "~/types/EthChain";
 import { useNFTStore } from "./NFTStore";
 import { useUserStateStore } from "./UserStateStore";
 import { useUserStore } from "./UserStore";
@@ -9,7 +9,7 @@ export const useBlockchainStore = defineStore("blockchainStore", () => {
         chainName: "Crazy Internet Coin",
         blockExplorerUrls: [],
         rpcUrls: ["https://testapi.cicscan.com/"],
-        chainId: ethers.utils.hexValue(1252),
+        chainId: ethers.toBeHex(1252),
         nativeCurrency: {
             name: "CICT",
             symbol: "CICT",
@@ -21,7 +21,7 @@ export const useBlockchainStore = defineStore("blockchainStore", () => {
         chainName: "Crazy Internet Coin",
         blockExplorerUrls: ["https://cicscan.com"],
         rpcUrls: ["https://rpceu.cicscan.com"],
-        chainId: ethers.utils.hexValue(1353),
+        chainId: ethers.toBeHex(1353),
         nativeCurrency: {
             name: "CIC",
             symbol: "CIC",
@@ -39,7 +39,7 @@ export const useBlockchainStore = defineStore("blockchainStore", () => {
             method: "eth_requestAccounts",
         });
 
-        useUserStore().CURRENT_USER.address = ethers.utils.getAddress(
+        useUserStore().CURRENT_USER.address = ethers.getAddress(
             accounts[0]
         );
     };
@@ -54,12 +54,9 @@ export const useBlockchainStore = defineStore("blockchainStore", () => {
 
     const getSigner = async (
         provider: typeof window.ethereum
-    ): Promise<ethers.providers.JsonRpcSigner> => {
-        const localProvider = new ethers.providers.Web3Provider(
-            <
-                | ethers.providers.ExternalProvider
-                | ethers.providers.JsonRpcFetchFunc
-            >provider
+    ): Promise<ethers.JsonRpcSigner> => {
+        const localProvider = new ethers.BrowserProvider(
+            provider
         );
 
         let signer = markRaw(
@@ -70,19 +67,12 @@ export const useBlockchainStore = defineStore("blockchainStore", () => {
     };
 
     const switchChain = async (
-        provider: ethers.providers.ExternalProvider,
+        provider: ethers.BrowserProvider,
         localChain: string
     ) => {
-        if (!provider.request) return;
-
         try {
-            await provider.request({
-                method: "wallet_switchEthereumChain",
-                params: [
-                    {
-                        chainId: localChain,
-                    },
-                ],
+            await provider.send("wallet_switchEthereumChain", {
+                chainId: localChain,
             });
         } catch (error) {
             // ! TRY TO ADD CHAIN
@@ -93,7 +83,7 @@ export const useBlockchainStore = defineStore("blockchainStore", () => {
     const accountsChanged = (accounts: string[]) => {
         if (accounts.length === 0) disconnect(window.ethereum);
         else
-            useUserStore().CURRENT_USER.address = ethers.utils.getAddress(
+            useUserStore().CURRENT_USER.address = ethers.getAddress(
                 accounts[0]
             );
         useUserStore().setupUser();

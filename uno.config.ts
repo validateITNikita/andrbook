@@ -1,8 +1,16 @@
 // uno.config.ts
-import { defineConfig, presetUno } from "unocss";
+import { defineConfig, presetUno, presetWebFonts } from "unocss";
 
 export default defineConfig({
-    presets: [presetUno()],
+    presets: [presetUno(), presetWebFonts({
+        provider: "google",
+        fonts: {
+            kalam: {
+                name: "Parisienne",
+                weights: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+            }
+        }
+    })],
     theme: {
         colors: {
             accent: "#8C54A1",

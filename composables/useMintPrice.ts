@@ -1,12 +1,12 @@
 import { readMintPriceConfig } from "@/contract";
-import { utils } from "ethers";
+import { formatEther } from "ethers";
 
 export default () => {
     const { data: mintPrice, refetch: refetchMintPrice } =
         useContractRead(readMintPriceConfig);
 
     const getMintPrice = computed(() =>
-        utils.formatEther(
+        formatEther(
             (mintPrice.value as string) ? (mintPrice.value as string) : "0"
         )
     );

@@ -19,7 +19,8 @@ export default defineNuxtConfig({
         autoImports: false,
     },
     runtimeConfig: {
-        app: {
+        public: {
+            baseURL: 'http://localhost:3000/',
             NUXT_IS_MAINNET: process.env.NUXT_IS_MAINNET,
         }
     }
