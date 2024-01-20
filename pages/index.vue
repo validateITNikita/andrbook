@@ -98,10 +98,11 @@ const { totalSupply, maxSupply, refetchMaxSupply, refetchTotalSupply } =
     </div>
 
     <!-- * LARGE SCREENS -->
-    <div class="hidden md:block w-full h-full bg-black overflow-clip pb-16 max-w-screen-xl mx-auto">
+    <div class="hidden md:block w-full h-full bg-black z-0 overflow-clip pb-16 max-w-screen-xl mx-auto">
         <!-- section 1 -->
         <Start />
 
+        
         <!-- stroke -->
         <div class="w-90% mx-auto h-3px bg-white/50 rounded-xl" />
 

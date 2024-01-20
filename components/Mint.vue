@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <div class="w-fit mx-auto text-black font-semibold text-center px-10 py-2 bg-white rounded-xl text-4xl cursor-pointer"
+                <div class="w-fit mx-auto text-black font-semibold text-center px-10 py-2 bg-white rounded-xl text-4xl cursor-pointer z-10"
                     @click="useNFTStore().mint">
                     MINT GENTLEMEN
                 </div>
